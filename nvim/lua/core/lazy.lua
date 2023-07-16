@@ -71,13 +71,20 @@ lazy.setup({
 
     -- File explorer
     {
-      'kyazdani42/nvim-tree.lua',
-      dependencies = { 'kyazdani42/nvim-web-devicons' },
+      'nvim-neo-tree/neo-tree.nvim', branch = 'v2.x',
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        'MunifTanjim/nui.nvim'
+      },
+      config = function()
+        vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+      end
     },
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.2',
       dependencies = { 'nvim-lua/plenary.nvim' }
     },
+    { 'nvim-telescope/telescope-project.nvim' },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
     -- Statusline
@@ -126,6 +133,9 @@ lazy.setup({
     { 'mfussenegger/nvim-dap' },
     { 'rcarriga/nvim-dap-ui' },
 
+    -- Markdown
+    { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
+
     -- Autojump
     {
       'ggandor/leap.nvim',
@@ -162,5 +172,34 @@ lazy.setup({
         'saadparwaiz1/cmp_luasnip',
       },
     },
+
+    -- Snippets
+    {
+      "L3MON4D3/LuaSnip",
+      dependencies = { "rafamadriz/friendly-snippets" },
+    },
+
+    -- Norg
+    {
+      'nvim-neorg/neorg',
+      build = ':Neorg sync-parsers',
+      dependencies = { 'nvim-lua/plenary.nvim' },
+      config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.dirman"] = { -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            notes = "~/notes",
+                        },
+                    },
+                },
+            },
+        }
+      end
+    },
+
   },
 })

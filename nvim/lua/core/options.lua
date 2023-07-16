@@ -9,14 +9,24 @@
 local g = vim.g       -- Global variables
 local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 
-vim.o.guicursor = table.concat({
-  'n-v-c:block-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
-  'i-ci:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
-  'r:hor50-Cursor/lCursor-blinkwait100-blinkon100-blinkoff100'
-}, ',')
 -----------------------------------------------------------
 -- General
 -----------------------------------------------------------
+opt.listchars = {
+  tab='▷ ',
+  trail='·',
+  extends='◣',
+  precedes='◢',
+  nbsp='○'
+}
+opt.list = true
+opt.guicursor = {
+  'n-v-c:block',
+  'i-ci-ve:ver25-Cursor/lCursor-blinkwait1000-blinkon100-blinkoff100',
+  'r-cr:hor20',
+  'o:hor50'
+}
+opt.guifont = { 'Fira Code Retina', ':h20' }
 opt.mouse = 'a'                       -- Enable mouse support
 opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 opt.swapfile = false                  -- Don't use swapfile

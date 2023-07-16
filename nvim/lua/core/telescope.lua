@@ -1,5 +1,11 @@
 
-require('telescope').load_extension('fzf')
+local ok, telescope = pcall(require, 'telescope')
+if not ok then
+  return
+end
+
+telescope.load_extension('project')
+telescope.load_extension('fzf')
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})

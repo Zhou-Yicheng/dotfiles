@@ -1,0 +1,8 @@
+{
+    "mid": {
+        "prefix": "mid",
+        "body": [
+            "mid = lo + Math.floor((hi - lo) / 2)"
+        ]
+    }
+}
