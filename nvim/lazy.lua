@@ -126,7 +126,6 @@ lazy.setup({
 
     -- LSP
     { 'williamboman/mason-lspconfig.nvim' },
-    { 'jose-elias-alvarez/null-ls.nvim' },
     { 'neovim/nvim-lspconfig' },
 
     -- DAP
@@ -137,13 +136,7 @@ lazy.setup({
     { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
 
     -- Autojump
-    {
-      'ggandor/leap.nvim',
-      dependencies = { 'tpope/vim-repeat' },
-      config = function()
-        require('leap').add_default_mappings()
-      end
-    },
+    -- flash
 
     -- Autosuggest
     {
@@ -192,7 +185,7 @@ lazy.setup({
                 ["core.dirman"] = { -- Manages Neorg workspaces
                     config = {
                         workspaces = {
-                            notes = "~/notes",
+                            notes = "~/note",
                         },
                     },
                 },

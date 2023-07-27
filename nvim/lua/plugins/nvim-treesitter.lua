@@ -5,14 +5,11 @@
 -- Plugin: nvim-treesitter
 -- url: https://github.com/nvim-treesitter/nvim-treesitter
 
-
-local status_ok, nvim_treesitter = pcall(require, 'nvim-treesitter.configs')
-if not status_ok then
-  return
-end
-
--- See: https://github.com/nvim-treesitter/nvim-treesitter#quickstart
-nvim_treesitter.setup {
+return {
+  'nvim-treesitter/nvim-treesitter',
+  build = 'TSUpdate',
+  config = function()
+require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all"
   ensure_installed = {
     'bash', 'c', 'cpp', 'css', 'html', 'javascript', 'json', 'lua', 'python',
@@ -39,4 +36,6 @@ nvim_treesitter.setup {
       },
     },
   },
+}
+  end
 }
