@@ -1,7 +1,7 @@
 
-require('config.autocmds')
-require('config.keymaps')
-require('config.options')
+require('configs.autocmd')
+require('configs.keymaps')
+require('configs.options')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -17,8 +17,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local ok, lazy = pcall(require, 'lazy')
-if ok then
-  lazy.setup('plugin') -- load plugin from Lua module
-end
 
---require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snippet" }) -- load snippet in VScode style
+if ok then
+  lazy.setup('plugins') -- load plugins from Lua module
+end

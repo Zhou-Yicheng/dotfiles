@@ -19,11 +19,11 @@ return {
     'rafamadriz/friendly-snippets',
   },
   config = function()
-    local zero = require('lsp-zero').preset()
-    zero.on_attach(function(client, bufnr)
-      zero.default_keymaps({ buffer = bufnr })
+    local lsp = require('lsp-zero').preset()
+    lsp.on_attach(function(client, bufnr)
+      lsp.default_keymaps({ buffer = bufnr }) -- Default
     end)
-    zero.setup()
+    lsp.setup()
 
     local cmp = require('cmp')
     local luasnip = require('luasnip')
@@ -79,8 +79,8 @@ return {
           else
             fallback()
           end
-        end
+        end,
       },
     })
-  end
+  end,
 }

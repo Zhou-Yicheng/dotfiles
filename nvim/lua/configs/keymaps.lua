@@ -58,12 +58,12 @@ map('n', '<leader>q', ':qa!<CR>')
 -- Terminal mappings
 map('n', '<C-t>', ':Term<CR>', { noremap = true })  -- open
 map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
-map('n', '<leader>t', ':ToggleTerm<CR>')                -- toggle
+map('n', '<leader>tt', ':ToggleTerm<CR>')                -- toggle
 
--- NvimTree
-map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
-map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
-map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
+-- -- NvimTree
+-- map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close
+-- map('n', '<leader>f', ':NvimTreeRefresh<CR>')       -- refresh
+-- map('n', '<leader>n', ':NvimTreeFindFile<CR>')      -- search file
 
--- Tagbar
-map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
+-- -- Tagbar
+-- map('n', '<leader>z', ':TagbarToggle<CR>')          -- open/close
