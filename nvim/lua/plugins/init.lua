@@ -1,6 +1,6 @@
 return {
-  { 'numToStr/Comment.nvim', opts = {} },
-  { 'akinsho/toggleterm.nvim', config = true },
-  { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
+  { 'numToStr/Comment.nvim', event = 'VeryLazy', opts = {} },
+  { 'ellisonleao/glow.nvim', cmd = 'Glow', config = true },
   { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
 }

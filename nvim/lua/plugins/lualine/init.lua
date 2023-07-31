@@ -1,6 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  event = { 'BufReadPost', 'BufAdd', 'BufNewFile' },
   opts = {
     options = { theme = 'everforest' }
   },
