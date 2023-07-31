@@ -2,7 +2,7 @@
     "mid": {
         "prefix": "mid",
         "body": [
-            "mid = lo + Math.floor((hi - lo) / 2)"
+            "mid = $1 + Math.floor(($2 - $1) / 2);"
         ]
     }
 }

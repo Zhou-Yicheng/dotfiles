@@ -10,8 +10,6 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-vim.g.mapleader = ' '
-
 -----------------------------------------------------------
 -- Neovim shortcuts
 -----------------------------------------------------------
@@ -22,15 +20,14 @@ map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
 
--- Map Esc to kk
+-- Map kk to Esc
 map('i', 'kk', '<Esc>')
 
--- Clear search highlighting with <leader> and c
-map('n', '<leader>c', ':nohl<CR>')
+-- Clear highlight with <leader> and c and h
+map('n', '<leader>ch', ':nohl<CR>')
 
 -- Toggle auto-indenting for code paste
---map('n', '<F2>', ':set invpaste paste?<CR>')
---vim.opt.pastetoggle = '<F2>'
+map('n', '<F2>', ':set invpaste paste?<CR>')
 
 -- Change split orientation
 map('n', '<leader>tk', '<C-w>t<C-w>K') -- change vertical to horizontal
@@ -42,23 +39,22 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
--- Reload configuration without restart nvim
-map('n', '<leader>r', ':so %<CR>')
+-- Terminal mappings
+map('n', '<C-t>', ':Term<CR>', { noremap = true })  -- open
+map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
 
--- Fast saving with <leader> and s
-map('n', '<leader>s', ':w<CR>')
+-- -- Reload configuration without restart nvim
+-- map('n', '<leader>r', ':so %<CR>')
 
--- Close all windows and exit from Neovim with <leader> and q
-map('n', '<leader>q', ':qa!<CR>')
+-- -- Fast saving with <leader> and s
+-- map('n', '<leader>s', ':w<CR>')
+
+-- -- Close all windows and exit from Neovim with <leader> and q
+-- map('n', '<leader>q', ':qa!<CR>')
 
 -----------------------------------------------------------
 -- Applications and Plugins shortcuts
 -----------------------------------------------------------
-
--- Terminal mappings
-map('n', '<C-t>', ':Term<CR>', { noremap = true })  -- open
-map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
-map('n', '<leader>tt', ':ToggleTerm<CR>')                -- toggle
 
 -- -- NvimTree
 -- map('n', '<C-n>', ':NvimTreeToggle<CR>')            -- open/close

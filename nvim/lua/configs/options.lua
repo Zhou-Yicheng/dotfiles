@@ -28,7 +28,7 @@ opt.guicursor = {
   'r-cr:hor20',
   'o:hor50'
 }
-opt.guifont = { 'Fira Code Retina', ':h14' }
+opt.guifont = { 'Fira Code Retina', ':h12' }
 opt.mouse = 'a'                       -- Enable mouse support
 opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 opt.swapfile = false                  -- Don't use swapfile
@@ -47,7 +47,7 @@ opt.ignorecase = true       -- Ignore case letters when search
 opt.smartcase = true        -- Ignore lowercase for the whole pattern
 opt.linebreak = true        -- Wrap on word boundary
 opt.termguicolors = true    -- Enable 24-bit RGB colors
-opt.laststatus = 2          -- Set global statusline
+-- opt.laststatus = 3          -- Set global statusline
 
 -----------------------------------------------------------
 -- Tabs, indent
@@ -62,7 +62,7 @@ opt.smartindent = true      -- Autoindent new lines
 -----------------------------------------------------------
 opt.hidden = true           -- Enable background buffers
 opt.history = 100           -- Remember N lines in history
-opt.lazyredraw = true       -- Faster scrolling
+--opt.lazyredraw = true       -- Faster scrolling
 opt.synmaxcol = 240         -- Max column for syntax highlight
 opt.updatetime = 250        -- ms to wait for trigger an event
 

@@ -1,86 +1,57 @@
 return {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
-  dependencies = {
-    {
-      'williamboman/mason.nvim', -- Optional
-      build = function()
-        pcall(vim.api.nvim_command, 'MasonUpdate')
-      end,
-    },
-    'williamboman/mason-lspconfig.nvim', -- Optional
-    'neovim/nvim-lspconfig',             -- Required
-    'L3MON4D3/LuaSnip',                  -- Required
-    'hrsh7th/nvim-cmp',                  -- Required
-    'hrsh7th/cmp-nvim-lsp',              -- Required
-    'hrsh7th/cmp-buffer',
-    'hrsh7th/cmp-path',
-    'saadparwaiz1/cmp_luasnip',
-    'rafamadriz/friendly-snippets',
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = { 'hrsh7th/cmp-nvim-lsp' },
   },
-  config = function()
-    local lsp = require('lsp-zero').preset()
-    lsp.on_attach(function(client, bufnr)
-      lsp.default_keymaps({ buffer = bufnr }) -- Default
-    end)
-    lsp.setup()
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    dependencies = {
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+    },
+  },
+  {
+    'L3MON4D3/LuaSnip',
+    dependencies = {
+      'saadparwaiz1/cmp_luasnip',
+      'rafamadriz/friendly-snippets',
+    },
+    config = function()
+      require('luasnip.loaders.from_vscode').lazy_load({ paths = { './snippets' }})
+    end
+  },
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'dev-v3',
+    config = function()
+      local lsp = require('lsp-zero').preset()
 
-    local cmp = require('cmp')
-    local luasnip = require('luasnip')
+      lsp.on_attach(function(client, bufnr)
+        lsp.default_keymaps({ buffer = bufnr })
+      end)
 
-    require('luasnip.loaders.from_vscode').lazy_load({ paths = './snippet' })
+      lsp.extend_cmp()
 
-    cmp.setup({
-      sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'buffer' },
-        { name = 'path' }
-      },
-      mapping = {
-        ['<C-n>'] = cmp.mapping.select_next_item(),
-        ['<C-p>'] = cmp.mapping.select_prev_item(),
-        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-d>'] = cmp.mapping.scroll_docs(4),
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }),
-        ['<C-f>'] = function(fallback)
-          if luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end,
-        ['<C-b>'] = function(fallback)
-          if luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end,
-        ['<Tab>'] = function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end,
-        ['<S-Tab>'] = function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end,
-      },
-    })
-  end,
+      lsp.setup_servers({ 'tsserver', 'rust_analyzer' })
+
+      local cmp = require('cmp')
+      local cmp_action = require('lsp-zero').cmp_action()
+
+      cmp.setup({
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path' },
+        },
+        mapping = {
+          ['<CR>'] = cmp.mapping.confirm(),
+          ['<C-Enter>'] = cmp.mapping.complete(),
+          ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+          ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        }
+      })
+    end
+  },
 }

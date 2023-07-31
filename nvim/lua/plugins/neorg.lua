@@ -10,13 +10,6 @@ return {
     load = {
       ['core.defaults'] = {},
       ['core.concealer'] = {},
-      ['core.dirman'] = { -- Manages Neorg workspaces
-        config = {
-          workspaces = {
-            notes = "~/note",
-          },
-        },
-      },
     },
   },
 }

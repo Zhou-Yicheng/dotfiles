@@ -1,7 +1,6 @@
 return {
-  { 'folke/which-key.nvim', event = 'VeryLazy' }, -- XXX
-  { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
-  { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
+  { 'numToStr/Comment.nvim', opts = {} },
   { 'akinsho/toggleterm.nvim', config = true },
-
+  { 'ellisonleao/glow.nvim', config = true, cmd = 'Glow' },
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
 }
