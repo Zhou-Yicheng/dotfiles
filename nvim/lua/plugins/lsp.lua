@@ -1,6 +1,17 @@
 return {
-  { 'neovim/nvim-lspconfig', lazy = true },
-  { 'nvimdev/lspsaga.nvim', event = 'LspAttach', opts = {} },
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'dev-v3',
+    lazy = true,
+    config = false,
+  },
+  {
+    'nvimdev/lspsaga.nvim',
+    event = 'LspAttach',
+    config = function ()
+      require('lspsaga').setup()
+    end
+  },
   {
     'L3MON4D3/LuaSnip',
     lazy = true,
@@ -18,32 +29,22 @@ return {
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
     },
-  },
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'dev-v3',
-    event = 'VeryLazy',
-    -- event = { 'BufReadPost', 'BufNewFile' },
     config = function()
-      local lsp = require('lsp-zero').preset()
-
-      lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps({ buffer = bufnr })
-      end)
-
-      lsp.extend_cmp()
-
-      require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-      lsp.setup_servers({ 'tsserver', 'rust_analyzer' })
+      require('lsp-zero').extend_cmp()
 
       local cmp = require('cmp')
       local luasnip = require('luasnip')
 
       cmp.setup({
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'buffer' },
+          { name = 'path' },
+        },
         mapping = {
           ['<CR>'] = cmp.mapping.confirm(),
-          ['<C-Enter>'] = cmp.mapping.complete(),
+          ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-f>'] = function(fallback)
             if luasnip.expand_or_jumpable() then
               luasnip.expand_or_jump()
@@ -59,13 +60,23 @@ return {
             end
           end
         },
-        sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
-          { name = 'path' },
-        },
       })
+    end
+  },
+  {
+    'neovim/nvim-lspconfig',
+    cmd = 'LspInfo',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      local lsp = require('lsp-zero').preset({})
+
+      lsp.on_attach(function(client, bufnr)
+        lsp.default_keymaps({ buffer = bufnr })
+      end)
+
+      require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+      lsp.setup_servers({ 'tsserver', 'rust_analyzer' })
     end
   },
 }

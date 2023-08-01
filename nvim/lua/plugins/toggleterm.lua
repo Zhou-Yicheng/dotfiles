@@ -8,5 +8,8 @@ return {
     'ToggleTermSendCurrentLine',
     'ToggleTermSendVisualSelection',
   },
+  keys = {
+    { '<leader>tt', '<CMD>ToggleTerm<CR>', desc = 'Toogle Terminal' },
+  },
   config = true,
 }

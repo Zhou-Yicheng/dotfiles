@@ -1,4 +1,3 @@
--- TODO
 return {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
@@ -9,18 +8,18 @@ return {
     'nvim-telescope/telescope-project.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
+  keys = {
+    { '<leader>fe', '<CMD>Telescope file_browser<CR>', desc = 'File Browser' },
+    { '<leader>ff', '<CMD>Telescope find_files<CR>', desc = 'Find Files' },
+    { '<leader>fg', '<CMD>Telescope live_grep<CR>', desc = 'Live Grep' },
+    { '<leader>fb', '<CMD>Telescope buffers<CR>', desc = 'Find Buffers' },
+    { '<leader>fh', '<CMD>Telescope help_tags<CR>', desc = 'Help Tags' },
+    { '<leader>fr', '<CMD>Telescope oldfiles<CR>', desc = 'Recent Files' },
+    { '<leader>gc', '<CMD>Telescope git_commits<CR>', desc = 'git commits' },
+    { '<leader>gs', '<CMD>Telescope git_status<CR>', desc = 'git status' },
+    { '<leader>fp', function() require('telescope').extensions.project.project() end },
+  },
   config = function()
-    local builtin = require('telescope.builtin')
-    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
-    local file_explorer = require('telescope').extensions.file_browser.file_browser
-    vim.keymap.set('n', '<leader>fe', file_explorer, { noremap = true })
-    local project = require('telescope').extensions.project.project
-    vim.keymap.set('n', '<leader>fp', project, { noremap = true })
-
     require('telescope').load_extension('file_browser')
     require('telescope').load_extension('project')
     require('telescope').load_extension('fzf')

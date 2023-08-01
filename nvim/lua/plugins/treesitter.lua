@@ -6,6 +6,9 @@ return {
     'nvim-treesitter/nvim-treesitter-context',
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
+  keys = {
+    { '<leader>tc', '<CMD>TSContextToggle<CR>', desc = 'Toggle Context' },
+  },
   config = function()
     require('nvim-treesitter.configs').setup({
       ensure_installed = { 'vim', 'regex', 'lua', 'bash', 'markdown' , 'markdown_inline' },
@@ -65,10 +68,3 @@ return {
     })
   end,
 }
------------------------------------------------------------
--- Treesitter configuration file
-----------------------------------------------------------
-
--- Plugin: nvim-treesitter
--- url: https://github.com/nvim-treesitter/nvim-treesitter
-
