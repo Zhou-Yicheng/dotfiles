@@ -20,7 +20,7 @@ opt.listchars = {
   trail='·',
   extends='◣',
   precedes='◢',
-  nbsp='○'
+  nbsp='○',
 }
 opt.guicursor = {
   'n-v-c:block',

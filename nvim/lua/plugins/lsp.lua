@@ -3,44 +3,23 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
-    'williamboman/mason-lspconfig.nvim',
+    {   -- TODO: make mason lazy
+      'williamboman/mason-lspconfig.nvim',
+      dependencies = { 'williamboman/mason.nvim' },
+      config = function()   -- in order to mesure startuptime
+        require('mason').setup()
+        require('mason-lspconfig').setup()
+      end
+    },
   },
   config = function()
-    local lspconfig = require('lspconfig')
-
-    vim.api.nvim_create_autocmd('LspAttach', {
-      desc = 'LSP actions',
-      callback = function(event)
-        local opts = { buffer = event.buf }
-
-        vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-        vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-        vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-        vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-        vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-        vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-        vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-        vim.keymap.set({ 'n', 'x' }, '<leader>fm', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-        vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-
-        vim.keymap.set('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-        vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-        vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts) 
-      end
-    })
-
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-    require('mason').setup()
-    require('mason-lspconfig').setup({
-      handlers = {
-        function(server_name)
-          require('lspconfig')[server_name].setup({
-            capabilities = capabilities
-          })
-        end,
-      },
+    require('mason-lspconfig').setup_handlers({
+      function(server_name)
+        require('lspconfig')[server_name].setup({
+          capabilities = capabilities
+        })
+      end,
     })
   end
 }
