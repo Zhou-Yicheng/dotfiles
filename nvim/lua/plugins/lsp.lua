@@ -1,82 +1,47 @@
 return {
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'dev-v3',
-    lazy = true,
-    config = false,
+  'neovim/nvim-lspconfig',
+  event = { 'BufReadPre', 'BufNewFile' },
+  dependencies = {
+    'hrsh7th/cmp-nvim-lsp',
+    'williamboman/mason-lspconfig.nvim',
   },
-  {
-    'nvimdev/lspsaga.nvim',
-    event = 'LspAttach',
-    config = function ()
-      require('lspsaga').setup()
-    end
-  },
-  {
-    'L3MON4D3/LuaSnip',
-    lazy = true,
-    dependencies = { 'rafamadriz/friendly-snippets' },
-    config = function()
-      require('luasnip.loaders.from_vscode').lazy_load({ paths = { './snippets' }})
-    end
-  },
-  {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'saadparwaiz1/cmp_luasnip',
-    },
-    config = function()
-      require('lsp-zero').extend_cmp()
+  config = function()
+    local lspconfig = require('lspconfig')
 
-      local cmp = require('cmp')
-      local luasnip = require('luasnip')
+    vim.api.nvim_create_autocmd('LspAttach', {
+      desc = 'LSP actions',
+      callback = function(event)
+        local opts = { buffer = event.buf }
 
-      cmp.setup({
-        sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
-          { name = 'path' },
-        },
-        mapping = {
-          ['<CR>'] = cmp.mapping.confirm(),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-f>'] = function(fallback)
-            if luasnip.expand_or_jumpable() then
-              luasnip.expand_or_jump()
-            else
-              fallback()
-            end
-          end,
-          ['<C-b>'] = function(fallback)
-            if luasnip.jumpable(-1) then
-              luasnip.jump(-1)
-            else
-              fallback()
-            end
-          end
-        },
-      })
-    end
-  },
-  {
-    'neovim/nvim-lspconfig',
-    cmd = 'LspInfo',
-    event = { 'BufReadPre', 'BufNewFile' },
-    config = function()
-      local lsp = require('lsp-zero').preset({})
+        vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+        vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+        vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+        vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+        vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+        vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+        vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+        vim.keymap.set({ 'n', 'x' }, '<leader>fm', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+        vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 
-      lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps({ buffer = bufnr })
-      end)
+        vim.keymap.set('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
+        vim.keymap.set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+        vim.keymap.set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts) 
+      end
+    })
 
-      require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+    local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      lsp.setup_servers({ 'tsserver', 'rust_analyzer' })
-    end
-  },
+    require('mason').setup()
+    require('mason-lspconfig').setup({
+      handlers = {
+        function(server_name)
+          require('lspconfig')[server_name].setup({
+            capabilities = capabilities
+          })
+        end,
+      },
+    })
+  end
 }
+-- See also: https://github.com/VonHeikemen/lsp-zero.nvim

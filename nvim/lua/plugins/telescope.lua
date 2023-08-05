@@ -20,6 +20,16 @@ return {
     { '<leader>fp', function() require('telescope').extensions.project.project() end },
   },
   config = function()
+    require('telescope').setup({
+      extensions = {
+        project = {
+          on_project_selected = function(prompt_bufnr)
+            require('telescope._extensions.project.actions').change_working_directory(prompt_bufnr)
+            require('telescope').extensions.file_browser.file_browser()
+          end
+        }
+      }
+    })
     require('telescope').load_extension('file_browser')
     require('telescope').load_extension('project')
     require('telescope').load_extension('fzf')

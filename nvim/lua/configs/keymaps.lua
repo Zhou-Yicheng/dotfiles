@@ -26,9 +26,6 @@ map('i', 'kk', '<Esc>')
 -- Clear highlight with <leader> and c and h
 map('n', '<leader>ch', '<CMD>nohl<CR>')
 
--- Toggle auto-indenting for code paste
-map('n', '<F2>', '<CMD>set invpaste paste?<CR>')
-
 -- Change split orientation
 map('n', '<leader>tk', '<C-w>t<C-w>K') -- change vertical to horizontal
 map('n', '<leader>th', '<C-w>t<C-w>H') -- change horizontal to vertical
@@ -39,9 +36,12 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
+-- -- Toggle auto-indenting for code paste
+-- map('n', '<F2>', '<CMD>set invpaste paste?<CR>')
+
 -- Terminal mappings
-map('n', '<C-t>', '<CMD>Term<CR>', { noremap = true })  -- open
-map('t', '<Esc>', '<C-\\><C-n>')                    -- exit
+-- map('n', '<C-t>', '<CMD>Term<CR>')      -- open
+-- map('t', '<Esc>', '<C-\\><C-n>')        -- exit
 
 -- -- Reload configuration without restart nvim
 -- map('n', '<leader>r', ':so %<CR>')

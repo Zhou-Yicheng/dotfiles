@@ -1,6 +1,6 @@
 return {
   'nvim-lualine/lualine.nvim',
-  event = { 'BufReadPost', 'BufAdd', 'BufNewFile' },
+  event = { 'BufReadPost', 'BufNewFile', 'BufAdd' },
   opts = {
     options = { theme = 'everforest' }
   },
