@@ -23,7 +23,7 @@ return {
 
     dashboard.section.buttons.val = {
       dashboard.button('e', '  New', ':ene <BAR> startinsert<CR>'),
-      dashboard.button('f', '  File', ':Telescope file_files<CR>'),
+      dashboard.button('f', '  File', ':Telescope find_files<CR>'),
       dashboard.button('p', '  Project', ':lua require"telescope".extensions.project.project()<CR>'),
       dashboard.button('s', '  Settings', ':e $MYVIMRC<CR>'),
       dashboard.button('u', '  Update', ':Lazy update<CR>'),

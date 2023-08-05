@@ -20,8 +20,9 @@ map('', '<down>', '<nop>')
 map('', '<left>', '<nop>')
 map('', '<right>', '<nop>')
 
--- Map kk to Esc
-map('i', 'kk', '<Esc>')
+-- Map jk or kj to Esc
+map('i', 'jk', '<Esc>')
+map('i', 'kj', '<Esc>')
 
 -- Clear highlight with <leader> and c and h
 map('n', '<leader>ch', '<CMD>nohl<CR>')
