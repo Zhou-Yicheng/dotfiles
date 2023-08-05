@@ -15,9 +15,9 @@ return {
     { '<leader>fb', '<CMD>Telescope buffers<CR>', desc = 'Find Buffers' },
     { '<leader>fh', '<CMD>Telescope help_tags<CR>', desc = 'Help Tags' },
     { '<leader>fr', '<CMD>Telescope oldfiles<CR>', desc = 'Recent Files' },
+    { '<leader>fp', '<CMD>Telescope project<CR>', desc = 'Project' },
     { '<leader>gc', '<CMD>Telescope git_commits<CR>', desc = 'git commits' },
     { '<leader>gs', '<CMD>Telescope git_status<CR>', desc = 'git status' },
-    { '<leader>fp', function() require('telescope').extensions.project.project() end },
   },
   config = function()
     require('telescope').setup({
