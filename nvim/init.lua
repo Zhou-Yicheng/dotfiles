@@ -22,3 +22,5 @@ local ok, lazy = pcall(require, 'lazy')
 if ok then
   lazy.setup('plugins') -- load plugins from a Lua module
 end
+
+vim.keymap.set('n', '<leader>fm', vim.lsp.buf.format)

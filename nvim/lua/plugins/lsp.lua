@@ -3,13 +3,10 @@ return {
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'hrsh7th/cmp-nvim-lsp',
-    {   -- TODO: make mason lazy
+    {   -- TODO: make mason lazy?
       'williamboman/mason-lspconfig.nvim',
       dependencies = { 'williamboman/mason.nvim' },
-      config = function()   -- in order to mesure startuptime
-        require('mason').setup()
-        require('mason-lspconfig').setup()
-      end
+      opts = {},
     },
   },
   config = function()
