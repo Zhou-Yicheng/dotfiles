@@ -18,8 +18,8 @@ return {
     { ']d', '<CMD>Lspsaga diagnostic_jump_next<CR>' },
     -- Finder: references and implementation
     { 'gh', '<CMD>Lspsaga finder<CR>' },
-    -- Hover
-    { 'K',  '<CMD>Lspsaga hover_doc<CR>' },
+    -- -- Hover
+    -- { 'K',  '<CMD>Lspsaga hover_doc<CR>' },
     -- Implement
     { 'gi', '<CMD>Lspsaga finder imp<CR>' },
     -- Outline

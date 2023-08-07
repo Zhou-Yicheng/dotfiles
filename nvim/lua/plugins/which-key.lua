@@ -2,8 +2,8 @@ return {
   'folke/which-key.nvim',
   event = { 'CursorHold', 'CursorHoldI' },
   init = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 500
+    vim.opt.timeout = true
+    vim.opt.timeoutlen = 500
   end,
   opts = {
     plugins = { spelling = true },
