@@ -1,13 +1,17 @@
-local rose = {
+local name = 'everforest'
+
+local M = {}
+
+M['rose-pine'] = {
   'rose-pine/neovim',
-  name = 'rose-pine',
+  name = name,
   lazy = false,
   config = function()
-    vim.cmd('colorscheme rose-pine')
+    vim.cmd('colorscheme ' .. name)
   end,
 }
 
-local forest = {
+M['everforest'] = {
   'sainnhe/everforest',
   lazy = false, -- make sure we load this during startup if it is your main colorscheme
   config = function()
@@ -17,8 +21,8 @@ local forest = {
     -- For better performance
     vim.g.everforest_better_performance = 1
 
-    vim.cmd('colorscheme everforest')
+    vim.cmd('colorscheme ' .. name)
   end,
 }
 
-return forest
+return M[name]

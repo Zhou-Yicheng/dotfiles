@@ -18,9 +18,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local ok, lazy = pcall(require, 'lazy')
-
 if ok then
   lazy.setup('plugins') -- load plugins
 end
 
-vim.keymap.set('n', '<leader>fm', vim.lsp.buf.format)
