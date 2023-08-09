@@ -1,10 +1,10 @@
-return {
-  'monaqa/dial.nvim',
+0return {
+  'monaqa/dial.nvim', enabled = false,
   keys = {
-    {'<C-a>', function() require('dial.map').inc_normal() end},
-    {'<C-x>', function() require('dial.map').dec_normal() end},
-    {'g<C-a>', function() require('dial.map').inc_gnormal() end},
-    {'g<C-x>', function() require('dial.map').dec_gnormal() end},
+    { '<C-a>', function() require('dial.map').inc_normal() end },
+    { '<C-x>', function() require('dial.map').dec_normal() end },
+    { 'g<C-a>', function() require('dial.map').inc_gnormal() end },
+    { 'g<C-x>', function() require('dial.map').dec_gnormal() end },
   },
   config = function()
     local augend = require('dial.augend')
@@ -28,5 +28,5 @@ return {
     require('dial.config').augends:register_group({
       default = default
     })
-  end
+  end,
 }

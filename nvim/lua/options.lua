@@ -33,7 +33,7 @@ opt.guifont = { 'Fira Code Retina', ':h12' }
 -- Neovim UI
 ----------------------------------------------------------
 opt.number = true           -- Show line number
-opt.showmatch = true        -- Highlight matching parenthesis
+opt.showmatch = true        -- jump to matching parenthesis
 opt.colorcolumn = '100'      -- Line length marker at 80 columns
 opt.splitright = true       -- Vertical split to the right
 opt.splitbelow = true       -- Horizontal split to the bottom
@@ -56,8 +56,8 @@ opt.smartindent = true      -- Autoindent new lines
 opt.hidden = true           -- Enable background buffers
 opt.history = 100           -- Remember N lines in history
 --opt.lazyredraw = true       -- Faster scrolling
-opt.synmaxcol = 240         -- Max column for syntax highlight
-opt.updatetime = 480        -- ms to wait for trigger an event
+opt.synmaxcol = 300         -- Max column for syntax highlight
+opt.updatetime = 400        -- ms to wait for trigger an event
 
 ----------------------------------------------------------
 -- Startup
