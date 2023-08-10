@@ -1,8 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  event = 'BufRead',
-  -- event = { 'BufReadPost', 'BufNewFile' },
+  event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
   },
