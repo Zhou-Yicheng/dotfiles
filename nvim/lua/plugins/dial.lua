@@ -1,10 +1,12 @@
-0return {
-  'monaqa/dial.nvim', enabled = false,
+return {
+  'monaqa/dial.nvim',
   keys = {
     { '<C-a>', function() require('dial.map').inc_normal() end },
     { '<C-x>', function() require('dial.map').dec_normal() end },
     { 'g<C-a>', function() require('dial.map').inc_gnormal() end },
     { 'g<C-x>', function() require('dial.map').dec_gnormal() end },
+    { '<C-a>', mode = 'v', function() require('dial.map').inc_visual() end },
+    { '<C-x>', mode = 'v', function() require('dial.map').dec_visual() end },
   },
   config = function()
     local augend = require('dial.augend')
