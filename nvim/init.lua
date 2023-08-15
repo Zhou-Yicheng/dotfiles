@@ -19,6 +19,10 @@ vim.opt.rtp:prepend(lazypath)
 
 local ok, lazy = pcall(require, 'lazy')
 if ok then
-  lazy.setup('plugins') -- load plugins
+  lazy.setup('plugins', {
+    git = {
+      url_format = "git@github.com:%s.git"
+    }
+  })
 end
 

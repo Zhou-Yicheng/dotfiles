@@ -1,17 +1,13 @@
 return {
   'monaqa/dial.nvim',
   keys = {
-    { '<C-a>', function() require('dial.map').inc_normal() end },
-    { '<C-x>', function() require('dial.map').dec_normal() end },
-    { 'g<C-a>', function() require('dial.map').inc_gnormal() end },
-    { 'g<C-x>', function() require('dial.map').dec_gnormal() end },
-    { '<C-a>', mode = 'v', function() require('dial.map').inc_visual() end },
-    { '<C-x>', mode = 'v', function() require('dial.map').dec_visual() end },
+    { '<C-a>', '<CMD>DialIncrement<CR>' },
+    { '<C-x>', '<CMD>DialDecrement<CR>' },
   },
   config = function()
     local augend = require('dial.augend')
     local default = {
-      augend.integer.alias.decimal,
+      augend.integer.alias.decimal_int,
       augend.integer.alias.hex,
       augend.date.alias['%Y/%m/%d'],
       augend.date.alias['%Y-%m-%d'],
@@ -19,8 +15,6 @@ return {
       augend.date.alias['%H:%M'],
       augend.date.alias['%Y年%-m月%-d日'],
       augend.constant.alias.bool,
-      augend.constant.alias.alpha,
-      augend.constant.alias.Alpha,
       augend.constant.new({
         elements = { '&&', '||' },
         word = false,
