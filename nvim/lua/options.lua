@@ -23,9 +23,9 @@ opt.listchars = {
   nbsp='○',
 }
 
-opt.guifont = { 'Fira Code Retina', ':h12' }
+opt.guifont = { 'Fira Code Retina', ':h12.5' }
 -- opt.mouse = 'a'                       -- Enable mouse support
--- opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
+opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 -- opt.swapfile = false                  -- Don't use swapfile
 -- opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 
@@ -55,7 +55,7 @@ opt.smartindent = true      -- Autoindent new lines
 ----------------------------------------------------------
 opt.hidden = true           -- Enable background buffers
 opt.history = 100           -- Remember N lines in history
---opt.lazyredraw = true       -- Faster scrolling
+opt.timeoutlen = 200
 opt.synmaxcol = 300         -- Max column for syntax highlight
 opt.updatetime = 400        -- ms to wait for trigger an event
 
