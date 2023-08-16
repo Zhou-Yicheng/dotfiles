@@ -1,12 +1,9 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   build = ':TSUpdate',
-  event = { 'BufReadPost', 'BufNewFile' },
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-context',
-  },
-  keys = {
-    { '<leader>tc', '<CMD>TSContextToggle<CR>', desc = 'Toggle Context' },
   },
   config = function()
     require('nvim-treesitter.configs').setup({

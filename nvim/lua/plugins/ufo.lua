@@ -3,6 +3,7 @@ return {
   event = { 'BufReadPost', 'BufNewFile' },
   dependencies = {
     'kevinhwang91/promise-async',
+    'nvim-treesitter/nvim-treesitter',
   },
   keys = {
     { 'zR', function() require('ufo').openAllFolds() end },

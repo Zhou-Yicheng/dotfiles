@@ -24,10 +24,10 @@ opt.listchars = {
 }
 
 opt.guifont = { 'Fira Code Retina', ':h12.5' }
--- opt.mouse = 'a'                       -- Enable mouse support
+opt.mouse = 'a'                       -- Enable mouse support
 opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
--- opt.swapfile = false                  -- Don't use swapfile
--- opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
+opt.swapfile = false                  -- Don't use swapfile
+opt.completeopt = 'menuone,noinsert,noselect'  -- Autocomplete options
 
 ----------------------------------------------------------
 -- Neovim UI
