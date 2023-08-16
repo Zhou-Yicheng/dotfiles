@@ -23,7 +23,7 @@ opt.listchars = {
   nbsp='○',
 }
 
-opt.guifont = { 'Fira Code Retina', ':h12.5' }
+opt.guifont = { 'Fira Code Retina', ':h10' }
 opt.mouse = 'a'                       -- Enable mouse support
 opt.clipboard = 'unnamedplus'         -- Copy/paste to system clipboard
 opt.swapfile = false                  -- Don't use swapfile

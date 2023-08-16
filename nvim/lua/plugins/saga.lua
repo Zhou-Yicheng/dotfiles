@@ -4,8 +4,8 @@ return {
   dependencies = { 'nvim-treesitter/nvim-treesitter' },
   keys = {
     -- Callhierarchy
-    { '<leader>ci', '<CMD>Lspsaga incoming_calls<CR>' },
-    { '<leader>co', '<CMD>Lspsaga outgoing_calls<CR>' },
+    { '<Leader>ci', '<CMD>Lspsaga incoming_calls<CR>' },
+    { '<Leader>co', '<CMD>Lspsaga outgoing_calls<CR>' },
     -- Code Action
     { mode = { 'n', 'v' }, 'ga', '<CMD>Lspsaga code_action<CR>' },
     -- Definition
