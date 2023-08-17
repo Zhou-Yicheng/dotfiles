@@ -1,0 +1,4 @@
+USE="-X -kde -gnome wayland systemd nls" dbus ibus
+wm=sway
+w3=firefox-bin
+im=ibus
