@@ -19,5 +19,9 @@ prompt gentoo
 
 alias ls="ls --color"
 alias ll="ls -al"
+alias la="ls -A"
+alias l="ls"
+alias py="python3"
 
 source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+source /usr/share/autojump/autojump.zsh
