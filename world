@@ -1,8 +1,9 @@
-USE="-X -kde -gnome wayland systemd nls" dbus ibus
+USE="-X -kde -gnome wayland systemd musl alsa nls" dbus ibus
+sys-libs/musl sys-libs/libcxx
+
+gentoolkit
 wm=sway
-im=ibus
+im=ibus-rime
 init=systemd
-www=firefox-bin
-lang=rust-bin
-term=alacritty
+www=chromium libcxx
 net=NetworkManager
