@@ -7,10 +7,11 @@ return {
   },
   config = function()
     require('nvim-treesitter.configs').setup({
-      ensure_installed = { 'vim', 'regex', 'lua', 'bash', 'markdown' , 'markdown_inline' },
+      ensure_installed = { 'vim', 'regex', 'lua', 'bash', 'markdown' , 'markdown_inline', 'org' },
       auto_install = true,
       highlight = {
         enable = true,
+        additional_vim_regex_highlighting = { 'org' },
       },
       incremental_selection = {
         enable = true,
