@@ -1,4 +1,4 @@
-USE="-X -kde -gnome wayland systemd musl alsa nls" dbus ibus
+USE="-X -kde -gnome wayland systemd musl alsa nls dbus"
 sys-libs/musl sys-libs/libcxx
 
 gentoolkit
@@ -7,3 +7,6 @@ im=ibus-rime
 init=systemd
 www=chromium libcxx
 net=NetworkManager
+tldr=tealdeer
+
+emacs gui jit ssl
