@@ -24,6 +24,7 @@ return {
     dashboard.section.buttons.val = {
       dashboard.button('e', '  New', ':ene<CR>'),
       dashboard.button('f', '  File', ':Telescope find_files<CR>'),
+      dashboard.button('r', '  Recent', ':Telescope oldfiles<CR>'),
       dashboard.button('p', '  Project', ':Telescope project<CR>'),
       dashboard.button('s', '  Setting', ':e $MYVIMRC<CR>'),
       dashboard.button('u', '  Update', ':Lazy update<CR>'),
