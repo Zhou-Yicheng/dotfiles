@@ -9,4 +9,3 @@ www=chromium libcxx
 net=NetworkManager
 tldr=tealdeer
 
-emacs gui jit ssl
