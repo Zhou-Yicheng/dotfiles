@@ -6,7 +6,6 @@ return {
     'nvim-lua/plenary.nvim',
     'nvim-telescope/telescope-file-browser.nvim',
     'nvim-telescope/telescope-project.nvim',
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   },
   keys = {
     { '<leader>fe', '<CMD>Telescope file_browser<CR>', desc = 'File Browser' },

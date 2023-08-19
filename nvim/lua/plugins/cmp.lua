@@ -12,10 +12,8 @@ return {
     local luasnip = require('luasnip')
 
     cmp.setup({
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
+      snippet = { -- REQUIRED
+        expand = function(args) luasnip.lsp_expand(args.body) end,
       },
       sources = {
         { name = 'orgmode' },
@@ -25,7 +23,7 @@ return {
         { name = 'path' },
       },
       mapping = {
-        ['<C-Space>'] = cmp.mapping.complete(),
+        -- ['<C-Space>'] = cmp.mapping.complete(),
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
         ['<C-y>'] = cmp.mapping.confirm({ select = true }),
         ['<C-e>'] = cmp.mapping.abort(),
