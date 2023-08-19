@@ -69,3 +69,6 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
 set timeout
 set timeoutlen=100
+
+set splitright
+set splitbelow
