@@ -12,7 +12,7 @@ local opt = vim.opt   -- Set options (global/buffer/windows-scoped)
 ----------------------------------------------------------
 -- General
 ----------------------------------------------------------
-opt.cursorcolumn = true
+-- opt.cursorcolumn = true
 opt.cursorline = true
 opt.list = true
 opt.listchars = {
