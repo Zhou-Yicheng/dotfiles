@@ -17,7 +17,7 @@ local function plugin()
       "git",
       "clone",
       "--filter=blob:none",
-      "git@github.com:folke/lazy.nvim.git",
+      "https://github.com/folke/lazy.nvim.git",
       "--branch=stable", -- latest stable release
       lazypath,
     })
@@ -26,10 +26,7 @@ local function plugin()
 
   local ok, lazy = pcall(require, 'lazy')
   if ok then
-    local opts = {
-      git = { url_format = "git@github.com:%s.git" },
-    }
-    lazy.setup('plugins', opts) -- setup plugins with opts
+    lazy.setup('plugins')
   end
 end
 
