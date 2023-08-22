@@ -1,11 +1,15 @@
 USE="-X -kde -gnome wayland systemd musl alsa nls dbus"
 sys-libs/musl sys-libs/libcxx
 
-gentoolkit
+gentoolkit: equery
+app-portage/pfl: e-file
+
 wm=sway
 im=ibus-rime
 init=systemd
 www=chromium libcxx
 net=NetworkManager
 tldr=tealdeer
+audio=pipewire
 
+~gtk ~gtk+
