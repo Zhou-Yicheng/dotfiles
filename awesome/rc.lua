@@ -44,7 +44,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "gtk/theme.lua")
+beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "st"
@@ -226,17 +226,6 @@ root.buttons(gears.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
-
-function gettags()
-    local screen = awful.screen.focused()
-    return screen.tags
-end
-
-function viewnextactive()
-end
-
-function viewprevactive()
-end
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
@@ -581,4 +570,5 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-
+awful.spawn(terminal .. ' -e ' .. 'top')
+awful.spawn(terminal .. ' -e ' .. 'sudo powertop')
