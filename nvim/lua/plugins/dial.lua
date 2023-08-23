@@ -20,6 +20,12 @@ return {
         word = false,
         cyclic = true,
       }),
+      augend.date.new({
+        pattern = '%b',
+        default_kind = 'month',
+        only_valid = true,
+        word = false,
+      }),
     }
     require('dial.config').augends:register_group({
       default = default
