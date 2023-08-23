@@ -64,3 +64,17 @@ set timeoutlen=100
 
 set splitright
 set splitbelow
+
+" Most plugin managers will do this
+filetype plugin indent on
+
+" Enable vim's syntax-related features
+syntax enable
+
+let g:vimtex_view_method = 'zathura'
+" let g:vimtex_view_general_view = 'okular'
+" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+
+" let g:vimtex_compiler_method = 'latexrun'
+
+let maplocalleader = ','
