@@ -1,4 +1,4 @@
-USE="-X -kde -gnome wayland systemd musl alsa nls dbus"
+USE="-X -kde -gnome wayland systemd musl libcxx icu"
 sys-libs/musl sys-libs/libcxx
 
 gentoolkit: equery
@@ -7,9 +7,10 @@ app-portage/pfl: e-file
 wm=sway
 im=ibus-rime
 init=systemd
-www=chromium libcxx
-net=NetworkManager
+www=qutebrowser
+pdf=zathura
+net=iwd
 tldr=tealdeer
 audio=pipewire
 
-~gtk ~gtk+
+!gtk !gtk+
