@@ -74,7 +74,14 @@ syntax enable
 let g:vimtex_view_method = 'zathura'
 " let g:vimtex_view_general_view = 'okular'
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-
 " let g:vimtex_compiler_method = 'latexrun'
 
+let g:ycm_semantic_triggers = { '*': ['re!\w{3}'] }
+
 let maplocalleader = ','
+
+nnoremap gh <plug>(YCMHover)
+
+set completeopt+=popup
+
+" let g:ycm_autoclose_preview_window_after_completion = 1
