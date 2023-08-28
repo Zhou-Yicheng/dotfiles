@@ -15,7 +15,7 @@ compinit
 autoload -Uz promptinit
 promptinit
 prompt gentoo
-# EOF
+# End of lines added by myself
 
 alias ls="ls --color"
 alias ll="ls -al"
