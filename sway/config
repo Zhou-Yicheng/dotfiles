@@ -199,15 +199,18 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86AudioRaiseVolume exec amixer -Mq set Speaker 5%+
+bindsym XF86AudioLowerVolume exec amixer -Mq set Speaker 5%-
+
+bindsym $mod+tab workspace next
+bindsym $mod+shift+tab workspace prev
+bindsym $mod+shift+s exec grimshot save area
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-bar {
-    status_command waybar
-    mode invisible
-}
-
-
-exec --no-startup-id systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec waybar
