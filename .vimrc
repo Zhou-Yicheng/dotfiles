@@ -77,11 +77,14 @@ let g:vimtex_view_method = 'zathura'
 " let g:vimtex_compiler_method = 'latexrun'
 
 let g:ycm_semantic_triggers = { '*': ['re!\w{3}'] }
-
-let maplocalleader = ','
-
-nnoremap gh <plug>(YCMHover)
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+let g:ycm_clangd_binary_path = exepath("clangd")
 
 set completeopt+=popup
 
-" let g:ycm_autoclose_preview_window_after_completion = 1
+nnoremap gh <plug>(YCMHover)
+
+let maplocalleader = ','
+
