@@ -18,7 +18,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu bemenu-run | xargs swaymsg exec --
+set $menu wofi --show run | xargs swaymsg exec --
 
 ### Output configuration
 #
@@ -212,5 +212,9 @@ bindsym $mod+shift+s exec grimshot save area
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+bar {
+    status_command waybar
+}
 exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec waybar
+exec --no-startup-id fcitx5 -d
+xwayland disable
