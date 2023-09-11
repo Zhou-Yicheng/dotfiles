@@ -3,6 +3,5 @@ USE="-X -gtk -gnome wayland qt5 systemd nls"
 wm=sway
 init=systemd
 pdf=zathura
-tldr=tealdeer
-term=kitty
 browser=qute
+rust-apps={tealdeer,bottom,loc}
