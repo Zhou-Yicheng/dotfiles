@@ -1,16 +1,8 @@
-USE="-X -kde -gnome wayland systemd musl libcxx icu"
-sys-libs/musl sys-libs/libcxx
-
-gentoolkit: equery
-app-portage/pfl: e-file
+USE="-X -gtk -gnome wayland qt5 systemd nls"
 
 wm=sway
-im=ibus-rime
 init=systemd
-www=qutebrowser
 pdf=zathura
-net=iwd
 tldr=tealdeer
-audio=pipewire
-
-!gtk !gtk+
+term=kitty
+browser=qute
