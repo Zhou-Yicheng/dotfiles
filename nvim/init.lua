@@ -31,7 +31,6 @@ local function plugin()
 end
 
 if vim.g.vscode then
-  config()
   vscode()
 else
   config()
