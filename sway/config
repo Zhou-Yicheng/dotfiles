@@ -23,7 +23,7 @@ set $menu wofi --show run | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
@@ -201,8 +201,8 @@ bindsym $mod+r mode "resize"
 
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
-bindsym XF86AudioRaiseVolume exec amixer -Mq set Speaker 5%+
-bindsym XF86AudioLowerVolume exec amixer -Mq set Speaker 5%-
+bindsym XF86AudioRaiseVolume exec amixer -M set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -M set Master 5%-
 
 bindsym $mod+tab workspace next
 bindsym $mod+shift+tab workspace prev
@@ -215,6 +215,7 @@ bindsym $mod+shift+s exec grimshot save area
 bar {
     status_command waybar
 }
+
 exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec --no-startup-id fcitx5 -d
 xwayland disable
