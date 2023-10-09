@@ -86,5 +86,4 @@ set completeopt+=popup
 
 nnoremap gh <plug>(YCMHover)
 
-let maplocalleader = ','
-
+let maplocalleader = ' '

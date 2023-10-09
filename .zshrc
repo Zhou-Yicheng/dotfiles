@@ -24,4 +24,8 @@ alias ll="ls -l"
 
 alias free="free -h"
 
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 eval "$(zoxide init zsh)"
