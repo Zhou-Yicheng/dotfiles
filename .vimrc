@@ -85,5 +85,3 @@ let g:ycm_clangd_binary_path = exepath("clangd")
 set completeopt+=popup
 
 nnoremap gh <plug>(YCMHover)
-
-let maplocalleader = ' '

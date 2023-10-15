@@ -24,6 +24,7 @@ alias ll="ls -l"
 
 alias free="free -h"
 alias neofetch="neofetch --color_blocks off"
+alias clj="clojure-1.11"
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
