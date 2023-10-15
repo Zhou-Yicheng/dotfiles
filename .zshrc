@@ -23,6 +23,7 @@ alias la="ls -a"
 alias ll="ls -l"
 
 alias free="free -h"
+alias neofetch="neofetch --color_blocks off"
 
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
