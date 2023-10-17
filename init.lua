@@ -15,8 +15,14 @@ end
 
 vim.opt.rtp:prepend(pckr_path)
 
+local cmd = require('pckr.loader.cmd')
 local keys = require('pckr.loader.keys')
 require('pckr').add {
+  {
+    'ellisonleao/glow.nvim',
+    cond = cmd('Glow'),
+    config = 'glow',
+  },
   {
     'folke/flash.nvim',
     cond = {
@@ -30,11 +36,10 @@ require('pckr').add {
   {
     'echasnovski/mini.nvim',
     config = function()
-      require('mini.ai').setup()
-      require('mini.comment').setup()
-      require('mini.operators').setup()
-      require('mini.pairs').setup()
-      require('mini.splitjoin').setup() -- 'gS'
+      local mods = { 'ai', 'comment', 'operators', 'pairs', 'splitjoin' }
+      for _, mod in pairs(mods) do
+        require('mini.' .. mod).setup()
+      end
       require('mini.surround').setup({
         mappings = {
           add = "gsa",            -- Add surrounding in Normal and Visual modes

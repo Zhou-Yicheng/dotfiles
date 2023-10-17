@@ -72,16 +72,4 @@ filetype plugin indent on
 syntax enable
 
 let g:vimtex_view_method = 'zathura'
-" let g:vimtex_view_general_view = 'okular'
-" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_compiler_method = 'latexrun'
-
-let g:ycm_semantic_triggers = { '*': ['re!\w{3}'] }
-" Let clangd fully control code completion
-let g:ycm_clangd_uses_ycmd_caching = 0
-" Use installed clangd, not YCM-bundled clangd which doesn't get updates.
-let g:ycm_clangd_binary_path = exepath("clangd")
-
-set completeopt+=popup
-
-nnoremap gh <plug>(YCMHover)
