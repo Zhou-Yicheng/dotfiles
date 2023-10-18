@@ -22,7 +22,7 @@ require('pckr').add {
     'ellisonleao/glow.nvim',
     cond = cmd('Glow'),
     config = 'glow',
-  },
+  };
   {
     'folke/flash.nvim',
     cond = {
@@ -32,7 +32,7 @@ require('pckr').add {
       keys({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end, { desc = 'Treesitter Search' }),
       keys({ 'c' }, '<c-s>', function() require('flash').toggle() end, { desc = 'Toggle Flash Search' }),
     },
-  },
+  };
   {
     'echasnovski/mini.nvim',
     config = function()
@@ -52,14 +52,15 @@ require('pckr').add {
         }
       })
     end,
-  },
+  };
   {
     'nvim-treesitter/nvim-treesitter-textobjects',
     requires = 'nvim-treesitter/nvim-treesitter',
     config = function()
       require("nvim-treesitter.configs").setup({
-        highlight = { enable = not (vim.g.vscode) },
+        highlight = { enable = not(vim.g.vscode) },
         indent = { enable = true },
+        auto_install = true,
         ensure_installed = {
           'astro', 'css', 'glimmer', 'graphql', 'html', 'javascript',
           'lua', 'php', 'python', 'scss', 'svelte', 'tsx', 'twig',
@@ -85,7 +86,7 @@ require('pckr').add {
         },
       })
     end
-  },
+  };
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
     requires = 'nvim-treesitter/nvim-treesitter',
@@ -94,5 +95,16 @@ require('pckr').add {
         enable_autucmd = false,
       })
     end,
-  },
+  };
+  {
+    'sainnhe/everforest',
+    config = function()
+      if not(vim.g.vscode) then
+      vim.opt.termguicolors = true
+      vim.g.everforest_background = 'soft'
+      vim.g.everforest_better_performance = true
+      vim.cmd[[colorscheme everforest]]
+      end
+    end
+  };
 }
