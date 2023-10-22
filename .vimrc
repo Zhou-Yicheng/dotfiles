@@ -34,7 +34,8 @@ set smartcase
 set incsearch
 
 " Unbind some useless/annoying default key bindings.
-nnoremap Q <Nop> " 'Q' in normal mode enters Ex mode. You almost never want this.
+" 'Q' in normal mode enters Ex mode. You almost never want this.
+nnoremap Q <Nop>
 
 " Disable audible bell because it's annoying.
 set noerrorbells visualbell t_vb=
@@ -66,3 +67,10 @@ endif
 let g:everforest_background = 'soft'
 let g:everforest_better_performance = 1
 colorscheme everforest
+
+let g:mapleader = ' '
+let g:maplocalleader = ','
+let g:tcomment_mapleader1 = ','
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
