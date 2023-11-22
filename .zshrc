@@ -7,7 +7,7 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/zhou/.zshrc'
 
-autoload -Uz compinit
+autoload -U compinit
 compinit
 # End of lines added by compinstall
 autoload -U compinit promptinit
@@ -23,11 +23,8 @@ alias la="ls -a"
 alias ll="ls -l"
 
 alias free="free -h"
-alias neofetch="neofetch --color_blocks off"
-alias clj="clojure-1.11"
+alias kitten="kitty +kitten"
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
+source /usr/share/autojump/autojump.zsh
 
-eval "$(zoxide init zsh)"
+export PATH=$PATH:~/.yarn/bin
