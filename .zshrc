@@ -24,6 +24,7 @@ alias ll="ls -l"
 
 alias free="free -h"
 alias kitten="kitty +kitten"
+alias code="code --ozone-platform-hint=auto"
 
 source /usr/share/autojump/autojump.zsh
 

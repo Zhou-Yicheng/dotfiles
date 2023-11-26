@@ -8,7 +8,7 @@ if not vim.loop.fs_stat(pckr_path) then
     'git',
     'clone',
     "--filter=blob:none",
-    'https://github.com/lewis6991/pckr.nvim',
+    'https://github.com/Zhou-Yicheng/pckr.nvim',
     pckr_path
   })
 end
