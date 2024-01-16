@@ -1,66 +1,51 @@
+vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.clipboard = 'unnamedplus'
 
-local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
-
-if not vim.loop.fs_stat(pckr_path) then
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     'git',
     'clone',
-    "--filter=blob:none",
-    'https://github.com/Zhou-Yicheng/pckr.nvim',
-    pckr_path
+    '--filter=blob:none',
+    'git@github.com:folke/lazy.nvim.git',
+    lazypath,
   })
 end
+vim.opt.rtp:prepend(lazypath)
 
-vim.opt.rtp:prepend(pckr_path)
-
-local cmd = require('pckr.loader.cmd')
-local keys = require('pckr.loader.keys')
-require('pckr').add {
-  {
-    'ellisonleao/glow.nvim',
-    cond = cmd('Glow'),
-    config = 'glow',
-  };
-  {
-    'folke/flash.nvim',
-    cond = {
-      keys({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end, { desc = 'Flash' }),
-      keys({ 'n', 'x', 'o' }, 'S', function() require('flash').treesitter() end, { desc = 'Flash Treesitter' }),
-      keys({ 'o' }, 'r', function() require('flash').remote() end, { desc = 'Remote Flash' }),
-      keys({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end, { desc = 'Treesitter Search' }),
-      keys({ 'c' }, '<c-s>', function() require('flash').toggle() end, { desc = 'Toggle Flash Search' }),
-    },
-  };
-  {
-    'echasnovski/mini.nvim',
-    config = function()
-      local mods = { 'ai', 'comment', 'operators', 'pairs', 'splitjoin' }
-      for _, mod in pairs(mods) do
-        require('mini.' .. mod).setup()
-      end
-      require('mini.surround').setup({
-        mappings = {
-          add = "gsa",            -- Add surrounding in Normal and Visual modes
-          delete = "gsd",         -- Delete surrounding
-          find = "gsf",           -- Find surrounding (to the right)
-          find_left = "gsF",      -- Find surrounding (to the left)
-          highlight = "gsh",      -- Highlight surrounding
-          replace = "gsr",        -- Replace surrounding
-          update_n_lines = "gsn", -- Update `n_lines`
-        }
-      })
-    end,
-  };
-  {
+require('lazy').setup({
+{
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  ---@type Flash.Config
+  opts = {},
+  -- stylua: ignore
+  keys = {
+    { "ss", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  },
+},
+{
+  'echasnovski/mini.nvim',
+  config = function()
+    require('mini.ai').setup()
+    require('mini.comment').setup()
+    require('mini.pairs').setup()
+    require('mini.splitjoin').setup() -- gS
+    require('mini.surround').setup()	-- sa sr sd
+    require('mini.operators').setup() -- g= gx gm gr
+  end
+},
+{
     'nvim-treesitter/nvim-treesitter-textobjects',
-    requires = 'nvim-treesitter/nvim-treesitter',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
     config = function()
       require("nvim-treesitter.configs").setup({
-        highlight = { enable = not(vim.g.vscode) },
-        indent = { enable = true },
-        auto_install = true,
+        highlight = { enable = false },
         ensure_installed = {
           'astro', 'css', 'glimmer', 'graphql', 'html', 'javascript',
           'lua', 'php', 'python', 'scss', 'svelte', 'tsx', 'twig',
@@ -69,10 +54,10 @@ require('pckr').add {
         incremental_selection = {
           enable = true,
           keymaps = {
-            init_selection = "<C-space>",
-            node_incremental = "<C-space>",
+            init_selection = '<C-space>',
+            node_incremental = '<C-space>',
             scope_incremental = false,
-            node_decremental = "<bs>",
+            node_decremental = '<bs>',
           },
         },
         textobjects = {
@@ -86,25 +71,5 @@ require('pckr').add {
         },
       })
     end
-  };
-  {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    requires = 'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('ts_context_commentstring').setup({
-        enable_autucmd = false,
-      })
-    end,
-  };
-  {
-    'sainnhe/everforest',
-    config = function()
-      if not(vim.g.vscode) then
-      vim.opt.termguicolors = true
-      vim.g.everforest_background = 'soft'
-      vim.g.everforest_better_performance = true
-      vim.cmd[[colorscheme everforest]]
-      end
-    end
-  };
-}
+},
+})

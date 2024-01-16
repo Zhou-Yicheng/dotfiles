@@ -24,8 +24,10 @@ alias ll="ls -l"
 
 alias free="free -h"
 alias kitten="kitty +kitten"
-alias code="code --ozone-platform-hint=auto"
+alias code="code --ozone-platform-hint=auto --enable-wayland-ime"
 
 source /usr/share/autojump/autojump.zsh
 
 export PATH=$PATH:~/.yarn/bin
+
+export _JAVA_AWT_WM_NONREPARENTING=1
