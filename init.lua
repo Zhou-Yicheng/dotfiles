@@ -14,7 +14,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
+local opts = {
+  git = {
+    url_format = "git@github.com:%s",
+  },
+}
+
+local plugins = {
 {
   "folke/flash.nvim",
   event = "VeryLazy",
@@ -72,4 +78,6 @@ require('lazy').setup({
       })
     end
 },
-})
+}
+
+require('lazy').setup(plugins, opts)
