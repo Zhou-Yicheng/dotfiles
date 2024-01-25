@@ -1,3 +1,4 @@
-$terminal = hyper
+$terminal = WezTerm
 $finder = xplorer
 $editor = vscoder
+$unar = unarchiver
