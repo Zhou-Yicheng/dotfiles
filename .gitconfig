@@ -18,3 +18,8 @@
 
 [diff]
     colorMoved = default
+
+[merge]
+  tool = code
+[mergetool "code"]
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
