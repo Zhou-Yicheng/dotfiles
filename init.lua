@@ -1,4 +1,4 @@
-vim.opt.timeoutlen = 100
+vim.opt.timeoutlen = 333
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.clipboard = 'unnamedplus'
