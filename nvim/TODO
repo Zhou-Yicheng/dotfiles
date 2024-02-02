@@ -1,4 +1,5 @@
-$terminal = kitty
-$shell = fish
+$autojump = zoxide
 $finder = xplorer
+$shell = fish
+$terminal = kitty
 $unar = unarchiver
