@@ -1,5 +1,4 @@
-$browser = floorp
-$terminal = WezTerm
-$shell = fish + starship
+$terminal = kitty
+$shell = fish
 $finder = xplorer
 $unar = unarchiver

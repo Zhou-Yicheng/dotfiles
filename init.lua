@@ -54,8 +54,8 @@ local plugins = {
       require("nvim-treesitter.configs").setup({
         highlight = { enable = false },
         ensure_installed = {
-          'astro', 'css', 'glimmer', 'graphql', 'html', 'javascript',
-          'lua', 'php', 'python', 'scss', 'svelte', 'tsx', 'twig',
+          'css', 'glimmer', 'html', 'javascript',
+          'lua', 'php', 'python', 'scss', 'tsx', 'twig',
           'typescript', 'vim',
         },
         incremental_selection = {
@@ -78,6 +78,11 @@ local plugins = {
         },
       })
     end
+},
+{
+	"ThePrimeagen/refactoring.nvim",
+	dependencies = { "nvim-lua/plenary.nvim" },
+	config = true,
 },
 }
 
