@@ -1,5 +1,6 @@
-$autojump = zoxide
-$finder = xplorer
-$shell = fish
-$terminal = kitty
-$unar = unarchiver
+- [x] autojump = zoxide
+- [ ] browser = firefox
+- [ ] finder = xplorer
+- [ ] shell = fish
+- [ ] terminal = kitty
+- [ ] unar = unarchiver
